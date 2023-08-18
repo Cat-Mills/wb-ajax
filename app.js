@@ -24,7 +24,13 @@ app.get('/', (req, res) => {
 
 app.get('/weather.txt', (req, res) => {
   const zipcode = req.query.zipcode;
-  // TODO: Get the weather for this zipcode and return the forecast if available.
+  //*: Get the weather for this zipcode and return the forecast if available.
+  const weather = WEATHER[zipcode];
+  if(weather){
+    res.send(weather.forecast)
+  } else {
+    res.send(DEFAULT_FORECAST)
+  }
   // If not, return the default forecast.
 })
 
